@@ -43,7 +43,7 @@ $$\mathcal{L}\_{ac}(D)=\mathbb{E}[\log P(C=c|y)]$$
 - Discriminator wants to correctly predict image class label $c$
 - Generator wants discriminator to predict its images as class label $c$
 
-*$L\_{1}$ supervised loss*:
+*L1 supervised loss*:
 
 $$\mathcal{L}\_{sup}(G)=\vert G(x,z)-y\vert\_1$$
 
