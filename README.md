@@ -64,6 +64,20 @@ $$\mathcal{L}\_{div}(G)=\lambda\_{div}\vert G(x,z\_{1}-G(x,z\_{2})\vert\_{1}$$
 - Maximizes distance between generated output over two different random noise vectors
 - Encourages diverse output instead of learning to copy target image
 
+## Model Outputs
+
+### pix2pix baseline:
+
+<img width="587" height="191" alt="image" src="https://github.com/user-attachments/assets/7e408022-4a4b-4706-82aa-ec4fb8f5c8f1" />
+<img width="587" height="191" alt="image" src="https://github.com/user-attachments/assets/a176ccbd-618c-4afe-9886-c01c842daebf" />
+<img width="587" height="191" alt="image" src="https://github.com/user-attachments/assets/ac7fa8df-2531-45a3-9c90-d6dbb8d1499e" />
+<img width="587" height="191" alt="image" src="https://github.com/user-attachments/assets/9a331d10-329b-49b3-91ab-49dc0dc6cafa" />
+<img width="587" height="191" alt="image" src="https://github.com/user-attachments/assets/bda37dbb-09c6-48d2-aae4-70dedef5c0a7" />
+
+### Improved SketchyGAN model:
+
+<img width="558" height="766" alt="image" src="https://github.com/user-attachments/assets/c08ba0cf-0efe-4f67-b2dc-5e9c784f2971" />
+
 ## Experimental Results
 
 | Model | Inception Score (IS) &uarr; | Fréchet Inception Distance (FID) &darr; |
@@ -73,11 +87,13 @@ $$\mathcal{L}\_{div}(G)=\lambda\_{div}\vert G(x,z\_{1}-G(x,z\_{2})\vert\_{1}$$
 
 ## Key Findings
 
-1. **Geometric & Structural Preservation**: The inclusion of MRU blocks allowed the network to learn low-level geometric mappings. Coarse structural elements were consistently observed.
-2. **Detail & Color**: Outputs suffered from blurriness and color artifacts. High-frequency textures and sharp boundaries were lost.
+1. **Geometric & Structural Preservation**: The inclusion of MRU blocks allowed the network to learn low-level geometric mappings. Coarse structural elements were consistently observed (general balloon shape, vertical orientation).
+2. **Lack of fine detail**: High-frequency details and textures were lost (sharp edges, object-specific features). Outputs were generally blurry and indistinct.
+3. **Color inconsistency & artifacts**: Poorly localized and diffused color distributions.
+4. **Mode Collapse**: Similar structural patterns observed, indicating low generator diversity. A method of dynamic loss function weight adjustments could be implemented to increase the presence of the diversity loss term to combat this.
 
 ## Conclusion
 
-The improved model performed slightly better than the pix2pix baseline model. Outputs did not suffer from extreme overfitting as the baseline model did, rather producing a more general, similar set of images. This suggests the improved model was learning fundamental characteristics of hot air balloons instead of specific image features. 
+The improved model performed slightly better than the pix2pix baseline model. Outputs did not suffer from extreme overfitting as the baseline model did, rather producing a more general, similar set of images. This suggests the improved model was learning fundamental characteristics of hot air balloons instead of specific image features.
 
-The lack of training data (~500 images) and compute limitations (Google Colab unpaid tier) severely hindered the model's ability to sufficiently learn in order to generate accurate images. Given enough training epochs, these models would display better results. 
+The lack of training data (~500 images) and compute limitations (Google Colab unpaid tier) severely hindered the model's ability to sufficiently learn in order to generate accurate images. Given enough training epochs, these models would display better results.
